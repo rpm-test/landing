@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Parkinson's Remote Monitoring</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+  	<link rel="icon" href="assets/img/brand/favicon.png?v=4" type="image/png">
+</head>
+
+<body>
+	
+	<header>
+		
+		<!--<div class="button-wrapper">
+			<i type="button" class="fa fa-volume-up btn-lg btn-light"></i>
+			<img style="max-width: 50px;" src="assets/ringlogo.png">
+			<i type="button" class="fa fa-home btn-lg btn-light"></i>
+
+		</div>-->
+		<!--
+		<div class="button-wrapper">
+			<i type="button" class="fa fa-volume-up btn-lg btn-light"></i>
+		</div>-->
+	</header>
+
+	<main>
+		<div class="col-md-12 text-center h-100 d-flex flex-column">
+			<div>
+				<h2 id="message">Use your stylus to trace the spiral</h2>
+			</div>
+			
+			<div class="row h-100 justify-content-center">
+			    <div id="canvasDiv" class="align-self-center h-75 w-100">
+			    	
+			    </div>
+
+			</div>
+		</div>
+	</div>
+
+
+	</main>
+
+	<footer>
+		<div class="button-wrapper">
+			<button id="restart" onclick="restart()" type="button" class="btn btn-light btn-lg">Restart</button>
+			<div id="middle" class="d-flex flex-column">
+			<span id="step" class = "label label-default">Step 1/6</span>
+			<button id="skip" onclick="skip()" type="button" class="btn btn-light">Skip</button>
+			</div>
+			<button id="next" onclick="next()" type="button" class="btn btn-success btn-lg">Next</button>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="exam.js">
+		
+	</script>
+	
+
+
+</body>
+
+
+</html>

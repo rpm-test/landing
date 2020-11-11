@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCGvKK4jxIjZnWdeCJRQwnERv-CnXtyGPs",
+	    authDomain: "testrpm-e5b42.firebaseapp.com",
+	    databaseURL: "https://testrpm-e5b42.firebaseio.com",
+	    projectId: "testrpm-e5b42",
+	    storageBucket: "testrpm-e5b42.appspot.com",
+	    messagingSenderId: "736336199723",
+	    appId: "1:736336199723:web:905d2a8cdada33e201aa6e",
+	    measurementId: "G-9KHL3XJVBC"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Parkinson's Remote Monitoring</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+
+  	<script src="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.js"></script>
+
+  	<script type="text/javascript">
+
+		// Initialize the FirebaseUI Widget using Firebase.
+		var ui = new firebaseui.auth.AuthUI(firebase.auth());
+		// The start method will wait until the DOM is loaded.
+		ui.start('#phoneDiv', {
+			signInSuccessUrl: './home.html',
+			signInOptions: [
+		  		{
+			        provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+			        recaptchaParameters: {
+			          size: 'invisible'
+			        },
+		      	}
+			]
+		});
+  	</script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" />
+    <link rel="icon" href="assets/img/brand/favicon.png?v=4" type="image/png">
+</head>
+
+<body>
+	
+	<header>
+		
+		<!--<div class="button-wrapper">
+			<i type="button" class="fa fa-volume-up btn-lg btn-light"></i>
+			<img style="max-width: 50px;" src="assets/ringlogo.png">
+			<i type="button" class="fa fa-home btn-lg btn-light"></i>
+
+		</div>-->
+		<!--
+		<div class="button-wrapper">
+			<i type="button" class="fa fa-volume-up btn-lg btn-light"></i>
+		</div>-->
+	</header>
+
+	<main>
+		<div class="col-md-12 text-center h-100 d-flex flex-column">
+			<div>
+				<h2 id="message"><span id="logo" class="text-muted">Monitor<strong class="text-primary">PD</strong></span></h2>
+				<p id="submessage">(Make sure you are viewing this on a mobile phone/tablet)</p>
+			</div>
+			
+			<div class="row h-100 justify-content-center">
+			    <div id="canvasDiv" class="align-self-center h-75 w-100">
+			    	
+			    </div>
+
+			    <div id="phoneDiv" class="align-self-center h-50 w-100">
+			    	<!--
+			    	<label for="phone">Enter your phone number:</label>
+
+					<input type="tel" id="phone" name="phone"
+					       pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+					       required>
+					<div>
+						<small>Format: 0123456789 (10-digits)</small>
+					</div>
+
+					<div style="height:50px; width: 100%;"></div>
+
+					<button style="width:50%" id="login" onclick="login()" type="button" class="btn btn-primary btn-lg">Login</button>
+				-->
+			    </div>
+
+			    
+
+			    <div id="startDiv" class="align-self-center h-50 w-100">
+
+					<button id="start" onclick="location.href='./exam.html';" type="button" class="btn btn-success btn-lg">Start Exam</button>
+
+					<div style="height:50px; width: 100%;"></div>
+
+					<button id="community" type="button" class="btn btn-primary btn-lg">Community Discussion</button>
+			    </div>
+
+
+			    
+		</div>
+	</div>
+
+
+	</main>
+
+	<footer>
+		<small>© OneRing 2020</small>
+	</footer> 
+
+	<script type="text/javascript" src="auth.js">
+		
+	</script>
+	
+
+
+</body>
+
+
+</html>

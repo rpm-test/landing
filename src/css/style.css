@@ -1,0 +1,92 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600,700,800&display=swap);
+
+* { 
+	margin:0; 
+	padding:0; 
+}
+
+html, body { 
+	width:100%; 
+	height:100%; 
+	font-family: 'Helvetica', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+	touch-action: manipulation;
+}
+
+#logo {
+	font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+}
+
+.text-muted
+{
+    color: #718096 !important;
+}
+
+.text-primary
+{
+    color: #008aff !important;
+}
+
+/*
+body {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+}*/
+
+header {
+	height:5vh;
+	width:100vw;
+	background-color: white;
+
+}
+
+main {
+	height:72vh;
+	width: 100vw;
+	background-color: white;
+	touch-action: manipulation;
+}
+
+footer {
+	height:10vh;
+	width: 100vw;
+	background-color: white;
+	display:flex;
+	justify-content: center;
+	text-align:center;
+	/*align-items: stretch;*/
+}
+
+.button-wrapper {
+	display: flex;
+	justify-content: space-evenly;
+
+}
+
+canvas { 
+	display:block;
+	touch-action: manipulation;
+}
+
+
+#canvasDiv {
+	/*border: 2px dashed black;*/
+	/*background-image: url("../assets/spiral.png");
+	background-position: center;
+	background-size: 45vmax 90%;
+	background-repeat: no-repeat;*/
+	touch-action: manipulation;
+}
+
+
+.image {
+    opacity: 0.2;
+}
+
+.center { 
+    margin: 0 auto !important;
+}
+
