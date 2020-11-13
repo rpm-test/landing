@@ -422,12 +422,12 @@ function prepareInputExam() {
 	var canvasDiv = document.getElementById('canvasDiv');
 	canvasDiv.innerHTML = "";
 	canvasDiv.className += " justify-content-center align-items-center d-flex flex-column";
-	textInput = document.createElement('input');
+	textInput = document.createElement('textarea');
 	textInput.setAttribute('id', 'textInput');
 	textInput.setAttribute('type', 'text');
-	textInput.setAttribute('placeholder', 'Your message');
-	textInput.setAttribute('rows', '3');
-	textInput.style.width = "85vw";
+	textInput.setAttribute('placeholder', 'Your message here...');
+	textInput.setAttribute('rows', '4');
+	textInput.style.width = "80vw";
 	canvasDiv.appendChild(textInput);
 	/*
 	startAudio = document.createElement('button');
@@ -451,30 +451,31 @@ function prepareMedication() {
 	var canvasDiv = document.getElementById('canvasDiv');
 	canvasDiv.innerHTML = "";
 
-	container = document.createElement('div');
-	container.className += " justify-content-center align-items-center d-flex";
-
-	var array = ["<1","1","2","3","4","5","6","7","8","9","10",">10"];
+	var array = ["Less than 1 hour ago","1 hour ago","2 hours ago","3 hours ago","4 hours ago","5 hours ago","6 hours ago","7 hours ago","8 hours ago","9 hours ago","10 hours ago","More than 10 hours ago"];
 
 	//Create and append select list
 	var selectList = document.createElement("select");
 	selectList.id = "medSelect";
-	container.appendChild(selectList);
 
+	optgroup = document.createElement('optgroup');
+	optgroup.style.fontSize = "medium";
+
+	/*
 	label = document.createElement('label');
 	label.innerHTML = "hour(s) ago"
-	container.appendChild(label);
-
+	container.appendChild(label);*/
 
 	//Create and append the options
 	for (var i = 0; i < array.length; i++) {
 	    var option = document.createElement("option");
 	    option.value = array[i];
 	    option.text = array[i];
-	    selectList.appendChild(option);
+	    optgroup.appendChild(option);
 	}
 
-	canvasDiv.appendChild(container);
+	selectList.appendChild(optgroup);
+	canvasDiv.appendChild(selectList);
+
 }
 
 function prepareVideoCanvas() {
@@ -1043,12 +1044,14 @@ function completeCurrent() {
   		});*/
 
   		reportData["patientNotes"]["textMessage"] = document.getElementById('textInput').value;
+  		updateReport();
 
 		clearCanvas();
 	}
 	if (curTest == "medication") {
 
 		reportData["medication"]["lastDose"] = document.getElementById('medSelect').value;
+		updateReport();
 
 		clearCanvas();
 	}
