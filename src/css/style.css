@@ -57,6 +57,7 @@ footer {
 	display:flex;
 	justify-content: center;
 	text-align:center;
+	z-index: 1000;
 	/*align-items: stretch;*/
 }
 

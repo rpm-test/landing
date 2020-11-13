@@ -75,12 +75,13 @@ var messages = {
 		"dysk" : "Hold your phone still in your hand for 10 seconds",
 		"audio" : "Send your doctor a message about any symptoms",
 		"updrs" : "Sit back arms length and follow directions",
+		"medication": "When did you last take your Carbidopa/Levodopa dose?",
 		"complete" : "Exam complete!"
 	}
 
 
 
-var tests = ["spiral", "wave", "ft_left", "ft_right", "dysk", "audio", "complete"]
+var tests = ["spiral", "wave", "ft_left", "ft_right", "dysk", "audio", "medication", "complete"]
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -421,6 +422,14 @@ function prepareInputExam() {
 	var canvasDiv = document.getElementById('canvasDiv');
 	canvasDiv.innerHTML = "";
 	canvasDiv.className += " justify-content-center align-items-center d-flex flex-column";
+	textInput = document.createElement('input');
+	textInput.setAttribute('id', 'textInput');
+	textInput.setAttribute('type', 'text');
+	textInput.setAttribute('placeholder', 'Your message');
+	textInput.setAttribute('rows', '3');
+	textInput.style.width = "85vw";
+	canvasDiv.appendChild(textInput);
+	/*
 	startAudio = document.createElement('button');
 	startAudio.className = "btn btn-primary btn-lg"
 	startAudio.setAttribute('id', 'startAudio');
@@ -433,7 +442,39 @@ function prepareInputExam() {
 	startVideo.setAttribute('onclick', 'prepareVideoCanvas()');
 	startVideo.innerHTML = "Video";
 	startVideo.style.marginTop = "20px";
-	canvasDiv.appendChild(startVideo);
+	canvasDiv.appendChild(startVideo);*/
+}
+
+function prepareMedication() {
+
+	var header = document.getElementsByTagName('header');
+	var canvasDiv = document.getElementById('canvasDiv');
+	canvasDiv.innerHTML = "";
+
+	container = document.createElement('div');
+	container.className += " justify-content-center align-items-center d-flex";
+
+	var array = ["<1","1","2","3","4","5","6","7","8","9","10",">10"];
+
+	//Create and append select list
+	var selectList = document.createElement("select");
+	selectList.id = "medSelect";
+	container.appendChild(selectList);
+
+	label = document.createElement('label');
+	label.innerHTML = "hour(s) ago"
+	container.appendChild(label);
+
+
+	//Create and append the options
+	for (var i = 0; i < array.length; i++) {
+	    var option = document.createElement("option");
+	    option.value = array[i];
+	    option.text = array[i];
+	    selectList.appendChild(option);
+	}
+
+	canvasDiv.appendChild(container);
 }
 
 function prepareVideoCanvas() {
@@ -693,10 +734,10 @@ function redraw_FT() {
   }
 	*/
   
-  context.font = '20px sans-serif';
+  context.font = '18px sans-serif';
   context.fillStyle = "black";
   context.textAlign = "center";
-  context.fillText(clickTimes.length, canvas.width/2, canvas.height/2 - 100);
+  context.fillText((20 - clickTimes.length).toString() + " taps remaining", canvas.width/2, canvas.height/2 - 75);
   
 }
 
@@ -804,9 +845,8 @@ function createReport() {
 		"patientNotes": {
 			"audioURL": "",
 		},
-		"updrs": {
-			"videoURL": "",
-			"currentTasks" : ""
+		"medication": {
+			"lastDose": "",
 		},
 		"review": {
 			"timeSpent": "",
@@ -871,6 +911,7 @@ function completeCurrent() {
 		params = {
 			"clickX": clickX,
 			"clickY": clickY,
+			"clickDrag": clickDrag,
 			"time": timeDraw
 		}
 
@@ -899,6 +940,7 @@ function completeCurrent() {
 		params = {
 			"clickX": clickX,
 			"clickY": clickY,
+			"clickDrag": clickDrag,
 			"time": timeDraw
 		}
 
@@ -942,6 +984,8 @@ function completeCurrent() {
 		clearCanvas();
 	}
 	if (curTest == "audio") {
+
+		/*
 		recorder.disconnect(audiocontext.destination);
         mediaStream.disconnect(recorder);
 
@@ -996,12 +1040,17 @@ function completeCurrent() {
   				reportData["patientNotes"]["audioURL"] = downloadURL;
   				updateReport();
   			});
-  		});
+  		});*/
+
+  		reportData["patientNotes"]["textMessage"] = document.getElementById('textInput').value;
 
 		clearCanvas();
 	}
-	if (curTest == "video") {
+	if (curTest == "medication") {
 
+		reportData["medication"]["lastDose"] = document.getElementById('medSelect').value;
+
+		clearCanvas();
 	}
 }
 
@@ -1035,12 +1084,10 @@ function loadNext() {
 		clearTimeout(motionTimeout);
 		prepareInputExam();
 	}
-	else if (curTest == "video") {
-
+	else if (curTest == "medication") {
+		prepareMedication();
 	}
 	else if (curTest == "complete"){
-		reportData["completed"] = "true";
-		updateReport();
 		prepareSuccessView();
 	}
 }
