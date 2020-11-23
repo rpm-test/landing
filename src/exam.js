@@ -70,18 +70,18 @@ var storageRef = storage.ref()
 var messages = {
 		"spiral" : "Use your stylus to trace the spiral",
 		"wave" : "Use your stylus to trace the wave",
-		"ft_right" : "Use your right index finger to alternately tap both squares",
-		"ft_left" : "Use your left index finger to alternately tap both squares",
+		"ft_right" : "Tap both squares quickly with your right finger",
+		"ft_left" : "Tap both squares quickly with your left finger",
 		"dysk" : "Hold your phone still in your hand for 10 seconds",
 		"audio" : "Send your doctor a message about any symptoms",
 		"updrs" : "Sit back arms length and follow directions",
-		"medication": "When did you last take your Carbidopa/Levodopa dose?",
+		"medication": "When did you last take your Levodopa dose?",
 		"complete" : "Exam complete!"
 	}
 
 
 
-var tests = ["spiral", "wave", "ft_left", "ft_right", "dysk", "audio", "medication", "complete"]
+var tests = ["spiral", "wave", "ft_right", "ft_left", "dysk", "audio", "medication", "complete"]
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -275,7 +275,7 @@ function prepareFTCanvas()
 	  		}
 		} 
 
-		if (clickTimes.length > 20) {
+		if (clickTimes.length > 19) {
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 			$('#next').prop('disabled', false);
 			context.font = '40px sans-serif';
@@ -1062,7 +1062,7 @@ function completeCurrent() {
 function loadNext() {
 	testCount++;
 	curTest = tests[testCount];
-	$("#step").html("Step " + (testCount + 1) + "/6");
+	$("#step").html("Step " + (testCount + 1) + "/7");
 	$("#message").html(messages[curTest]);
 	if (testCount == tests.length - 2) {
 		$("#next").html("Done");
