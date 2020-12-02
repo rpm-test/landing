@@ -6082,6 +6082,12 @@ input[type='button'].btn-block
     flex: 1 1 auto;
 }
 
+.card-body.slim
+{
+    padding-top: 0;
+}
+
+
 .card-title
 {
     margin-bottom: 1.25rem;
