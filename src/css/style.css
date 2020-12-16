@@ -19,6 +19,11 @@ html, body {
     font-weight: 400;
 }
 
+.nunito {
+	font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+}
+
 .text-muted
 {
     color: #718096 !important;

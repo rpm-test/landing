@@ -10,6 +10,8 @@ var padding = 25;
 var lineWidth = 2;
 var spiralImage = new Image();
 var waveImage = new Image();
+var leftImage = new Image();
+var rightImage = new Image();
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
@@ -242,6 +244,22 @@ function prepareFTCanvas()
 	context.fillStyle ='red';
   	context.fillRect(canvas.width/2 - 125, canvas.height/2 - 50, 100, 100);
   	context.fillRect(canvas.width/2 + 25, canvas.height/2 - 50, 100, 100);
+
+  	leftImage.onload = function() { resourceLoaded(); 
+	};
+	leftImage.setAttribute('crossorigin', 'anonymous');
+	leftImage.src = "assets/left_hand.png";	
+
+	rightImage.onload = function() { resourceLoaded(); 
+	};
+	rightImage.setAttribute('crossorigin', 'anonymous');
+	rightImage.src = "assets/right_hand.png";	
+
+	if (curTest == "ft_left") {
+	  	context.drawImage(leftImage, 0, 0, 0.2*context.canvas.width, 0.2*context.canvas.width);
+	  } else {
+	  	context.drawImage(rightImage, 0.8*context.canvas.width, 0, 0.2*context.canvas.width, 0.2*context.canvas.width);
+	  }
 	
 
 	window.addEventListener('resize', resizeCanvas, false);
@@ -719,6 +737,12 @@ function redraw_FT() {
   context.fillStyle ='red';
   context.fillRect(context.canvas.width/2 + 25, context.canvas.height/2 - 50, 100, 100);
   context.fillRect(context.canvas.width/2 - 125, context.canvas.height/2 - 50, 100, 100);
+
+  if (curTest == "ft_left") {
+  	context.drawImage(leftImage, 0, 0, 0.2*context.canvas.width, 0.2*context.canvas.width);
+  } else {
+  	context.drawImage(rightImage, 0.8*context.canvas.width, 0, 0.2*context.canvas.width, 0.2*context.canvas.width);
+  }
   /*
   if (ft_sel == "left") {
   	context.fillRect(context.canvas.width/2 + 25, context.canvas.height/2 - 25, 50, 50);
