@@ -471,7 +471,7 @@ function prepareMedication() {
 	var canvasDiv = document.getElementById('canvasDiv');
 	canvasDiv.innerHTML = "";
 
-	var array = ["(Tap to answer)", "Less than 1 hour ago","1 hour ago","2 hours ago","3 hours ago","4 hours ago","5 hours ago","6 hours ago","7 hours ago","8 hours ago","9 hours ago","10 hours ago","11 hours ago", "12 hours ago", "More than 12 hours ago", "It's been several days"];
+	var array = ["(Tap to answer)", "<15 minutes ago", "30 minutes ago", "1 hour ago","2 hours ago","3 hours ago","4 hours ago","5 hours ago","6 hours ago","7 hours ago","8 hours ago","9 hours ago","10 hours ago","11 hours ago", "12 hours ago", "More than 12 hours ago", "It's been several days"];
 
 	//Create and append select list
 	var selectList = document.createElement("select");
