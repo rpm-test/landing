@@ -32,6 +32,7 @@ function checkLogin(){
 			$("#message").html("Welcome back, " + user["firstname"]);
 			$("#phoneDiv").hide();
 			$("#startDiv").show();
+			$("#canvasDiv").hide();
 		}
 	} else {
 		$("#phoneDiv").show();
